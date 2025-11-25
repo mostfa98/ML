@@ -1,0 +1,46 @@
+ What does “Ensemble” mean?
+In machine learning, ensemble means combining multiple models (often called “weak learners”) to create a stronger, more accurate model.
+The idea is:
+
+One weak model is like one student guessing on a test…
+100 weak students voting together can outperform even a strong student.
+
+There are two main ensemble strategies:
+
+Bagging (Bootstrap Aggregating) → Train models in parallel on different subsets of data, then average or vote. (e.g., Random Forest)
+
+Boosting → Train models sequentially, where each new model focuses on fixing the mistakes of the previous ones.
+
+2. AdaBoostClassifier
+Full name: Adaptive Boosting Classifier
+
+How it works:
+
+Start with a weak model (often a Decision Tree Stump — a tree with depth 1).
+
+Give all data points equal weight.
+
+Train the model → find misclassified points.
+
+Increase the weight of misclassified points so the next model pays more attention to them.
+
+Repeat for multiple rounds.
+
+Combine all models into a final weighted vote.
+
+Key point: Each model is trained to fix errors from the previous one.
+
+3. GradientBoostingClassifier
+Also a boosting method, but instead of reweighting data points like AdaBoost, it uses gradient descent on the loss function.
+
+How it works:
+
+Start with an initial prediction (e.g., the mean of the target).
+
+Fit a small decision tree to the residual errors (the difference between predictions and actual values).
+
+Update predictions by adding the new tree’s output (scaled by a learning rate).
+
+Repeat until a stopping condition is met (like max depth or number of trees).
+
+Key point: Think of it as building the model step-by-step to directly reduce prediction errors.
